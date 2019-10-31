@@ -15,13 +15,13 @@ class Engine3D:
                 triangle.append('gray')
             self.triangles.append(graphics.face.Face(triangle))
             
-    def __init__(self, points, triangles, width=1000, height=700, distance=6, scale=100):
+    def __init__(self, points, triangles, width=1000, height=700, distance=6, scale=100, title='3D', background='white'):
         #object parameters
         self.distance = distance
         self.scale = scale
 
         #initialize display
-        self.screen = graphics.screen.Screen(width, height)
+        self.screen = graphics.screen.Screen(width, height, title, background)
 
         #store coordinates
         self.writePoints(points)

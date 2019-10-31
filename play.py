@@ -7,7 +7,7 @@ scale = 60
 cube = rubics.rubicsCube()
 points, triangles = cube.readPoints, cube.readTriangles
 
-world = graphics.engine.Engine3D(points, triangles, scale=scale, distance=distance, width=400, height=600)
+world = graphics.engine.Engine3D(points, triangles, scale=scale, distance=distance, width=400, height=600, title="Rubik's cube")
 world.rotate('y', -20)
 world.rotate('x', -20)
 world.render()
@@ -30,6 +30,7 @@ def interact(event):
         world.render()
         
 world.screen.window.bind('<Key>', interact)
+world.screen.window.mainloop()
 
 '''
 Play around with the rubics cube:
