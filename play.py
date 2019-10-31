@@ -13,8 +13,8 @@ world.rotate('x', -20)
 world.render()
 
 def interact(event):
-    if event.keysym in ['r', 'l', 'u', 'd', 'f', 'b']:
-        k = event.keysym.upper()
+    if event.keysym in ['r', 'l', 'u', 'd', 'f', 'b', 'R', 'L', 'U', 'D', 'F', 'B']:
+        k = event.keysym
         exec('cube.' + k)
         triangles = cube.readTriangles
 
@@ -22,7 +22,7 @@ def interact(event):
         world.writeTriangles(triangles)
         world.render()
     elif event.keysym == 'n':
-        cube.randomize(30)
+        cube.randomize(20)
         triangles = cube.readTriangles
 
         world.clear()
@@ -41,5 +41,10 @@ d => down
 b => back
 f => front
 
+lower = clockwise
+caps = anticlockwise
+
 n => shuffle
+
+Drag to rotate
 '''

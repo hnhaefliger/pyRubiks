@@ -56,94 +56,101 @@ class rubicsCube:
 
     def randomize(self, iterations):
         for x in range(iterations):
-            exec('self.' + ['U', 'D', 'F', 'B', 'R', 'L'][random.randint(0,5)])
+            exec('self.' + ['U', 'D', 'F', 'B', 'R', 'L', 'u', 'd', 'f', 'b', 'r', 'l'][random.randint(0,9)])
 
+    @property
+    def u(self):
+        self.rotate(0)
+        (self.faces[1][2][2],self.faces[1][1][2],self.faces[1][0][2],
+         self.faces[2][2][2],self.faces[2][1][2],self.faces[2][0][2],
+         self.faces[3][2][2],self.faces[3][1][2],self.faces[3][0][2],
+         self.faces[4][2][2],self.faces[4][1][2],self.faces[4][0][2]
+         ) = (
+         self.faces[4][2][2],self.faces[4][1][2],self.faces[4][0][2],
+         self.faces[1][2][2],self.faces[1][1][2],self.faces[1][0][2],
+         self.faces[2][2][2],self.faces[2][1][2],self.faces[2][0][2],
+         self.faces[3][2][2],self.faces[3][1][2],self.faces[3][0][2])
+    @property
+    def d(self):
+        self.rotate(5)
+        (self.faces[1][0][0],self.faces[1][1][0],self.faces[1][2][0],
+         self.faces[4][0][0],self.faces[4][1][0],self.faces[4][2][0],
+         self.faces[3][0][0],self.faces[3][1][0],self.faces[3][2][0],
+         self.faces[2][0][0],self.faces[2][1][0],self.faces[2][2][0]
+         ) = (
+         self.faces[2][0][0],self.faces[2][1][0],self.faces[2][2][0],
+         self.faces[1][0][0],self.faces[1][1][0],self.faces[1][2][0],
+         self.faces[4][0][0],self.faces[4][1][0],self.faces[4][2][0],
+         self.faces[3][0][0],self.faces[3][1][0],self.faces[3][2][0],)
+    @property
+    def f(self):
+        self.rotate(1)
+        (self.faces[0][0][0],self.faces[0][1][0],self.faces[0][2][0],
+         self.faces[4][2][0],self.faces[4][2][1],self.faces[4][2][2],
+         self.faces[5][2][2],self.faces[5][1][2],self.faces[5][0][2],
+         self.faces[2][0][2],self.faces[2][0][1],self.faces[2][0][0]
+         ) = (
+         self.faces[2][0][2],self.faces[2][0][1],self.faces[2][0][0],
+         self.faces[0][0][0],self.faces[0][1][0],self.faces[0][2][0],
+         self.faces[4][2][0],self.faces[4][2][1],self.faces[4][2][2],
+         self.faces[5][2][2],self.faces[5][1][2],self.faces[5][0][2])
+    @property
+    def b(self):
+        self.rotate(3)
+        (self.faces[0][2][2],self.faces[0][1][2],self.faces[0][0][2],
+         self.faces[2][2][0],self.faces[2][2][1],self.faces[2][2][2],
+         self.faces[5][0][0],self.faces[5][1][0],self.faces[5][2][0],
+         self.faces[4][0][2],self.faces[4][0][1],self.faces[4][0][0]
+         ) = (
+         self.faces[4][0][2],self.faces[4][0][1],self.faces[4][0][0],
+         self.faces[0][2][2],self.faces[0][1][2],self.faces[0][0][2],
+         self.faces[2][2][0],self.faces[2][2][1],self.faces[2][2][2],
+         self.faces[5][0][0],self.faces[5][1][0],self.faces[5][2][0])
+    @property
+    def r(self):
+        self.rotate(4)
+        (self.faces[0][0][2],self.faces[0][0][1],self.faces[0][0][0],
+         self.faces[3][2][0],self.faces[3][2][1],self.faces[3][2][2],
+         self.faces[5][0][2],self.faces[5][0][1],self.faces[5][0][0],
+         self.faces[1][0][2],self.faces[1][0][1],self.faces[1][0][0]
+         ) = (
+         self.faces[1][0][2],self.faces[1][0][1],self.faces[1][0][0],
+         self.faces[0][0][2],self.faces[0][0][1],self.faces[0][0][0],
+         self.faces[3][2][0],self.faces[3][2][1],self.faces[3][2][2],
+         self.faces[5][0][2],self.faces[5][0][1],self.faces[5][0][0])
+    @property
+    def l(self):
+        self.rotate(2)
+        (self.faces[0][2][0],self.faces[0][2][1],self.faces[0][2][2],
+         self.faces[1][2][0],self.faces[1][2][1],self.faces[1][2][2],
+         self.faces[5][2][0],self.faces[5][2][1],self.faces[5][2][2],
+         self.faces[3][0][2],self.faces[3][0][1],self.faces[3][0][0]
+         ) = (
+         self.faces[3][0][2],self.faces[3][0][1],self.faces[3][0][0],
+         self.faces[0][2][0],self.faces[0][2][1],self.faces[0][2][2],
+         self.faces[1][2][0],self.faces[1][2][1],self.faces[1][2][2],
+         self.faces[5][2][0],self.faces[5][2][1],self.faces[5][2][2])
     @property
     def U(self):
-        self.rotate(0)
-        (
-        self.faces[1][2][2], self.faces[1][1][2], self.faces[1][0][2],
-        self.faces[2][2][2], self.faces[2][1][2], self.faces[2][0][2],
-        self.faces[3][2][0], self.faces[3][2][1], self.faces[3][2][2],
-        self.faces[4][2][2], self.faces[4][1][2], self.faces[4][0][2]
-        ) = (
-        self.faces[4][2][2], self.faces[4][1][2], self.faces[4][0][2],
-        self.faces[1][2][2], self.faces[1][1][2], self.faces[1][0][2],
-        self.faces[2][2][2], self.faces[2][1][2], self.faces[2][0][2],
-        self.faces[3][2][0], self.faces[3][2][1], self.faces[3][2][2]
-        )
-
+        for i in range(3):
+            self.u
     @property
     def D(self):
-        self.rotate(5)
-        (
-        self.faces[1][0][0], self.faces[1][1][0], self.faces[1][2][0],
-        self.faces[4][0][0], self.faces[4][1][0], self.faces[4][2][0],
-        self.faces[3][0][2], self.faces[3][0][1], self.faces[3][0][0],
-        self.faces[2][0][0], self.faces[2][1][0], self.faces[2][2][0]
-        ) = (
-        self.faces[2][0][0], self.faces[2][1][0], self.faces[2][2][0],
-        self.faces[1][0][0], self.faces[1][1][0], self.faces[1][2][0],
-        self.faces[4][0][0], self.faces[4][1][0], self.faces[4][2][0],
-        self.faces[3][0][2], self.faces[3][0][1], self.faces[3][0][0],
-        )
-
+        for i in range(3):
+            self.d
     @property
     def F(self):
-        self.rotate(1)
-        (
-        self.faces[0][0][0], self.faces[0][1][0], self.faces[0][2][0],
-        self.faces[4][2][0], self.faces[4][2][1], self.faces[4][2][2],
-        self.faces[5][2][2], self.faces[5][1][2], self.faces[5][0][2],
-        self.faces[2][0][2], self.faces[2][0][1], self.faces[2][0][0]
-        ) = (
-        self.faces[2][0][2], self.faces[2][0][1], self.faces[2][0][0],
-        self.faces[0][0][0], self.faces[0][1][0], self.faces[0][2][0],
-        self.faces[4][2][0], self.faces[4][2][1], self.faces[4][2][2],
-        self.faces[5][2][2], self.faces[5][1][2], self.faces[5][0][2]
-        )
-    
+        for i in range(3):
+            self.f
     @property
     def B(self):
-        self.rotate(3)
-        (
-        self.faces[0][2][2], self.faces[0][1][2], self.faces[0][0][2],
-        self.faces[2][2][0], self.faces[2][2][1], self.faces[2][2][2],
-        self.faces[5][0][0], self.faces[5][1][0], self.faces[5][2][0],
-        self.faces[4][0][2], self.faces[4][0][1], self.faces[4][0][0]
-        ) = (
-        self.faces[4][0][2], self.faces[4][0][1], self.faces[4][0][0],
-        self.faces[0][2][2], self.faces[0][1][2], self.faces[0][0][2],
-        self.faces[2][2][0], self.faces[2][2][1], self.faces[2][2][2],
-        self.faces[5][0][0], self.faces[5][1][0], self.faces[5][2][0]
-        )
-        
+        for i in range(3):
+            self.b
     @property
     def R(self):
-        self.rotate(4)
-        (
-        self.faces[0][0][2], self.faces[0][0][1], self.faces[0][0][0],
-        self.faces[3][0][0], self.faces[3][1][0], self.faces[3][2][0],
-        self.faces[5][0][2], self.faces[5][0][1], self.faces[5][0][0],
-        self.faces[1][0][2], self.faces[1][0][1], self.faces[1][0][0]
-        ) = (
-        self.faces[1][0][2], self.faces[1][0][1], self.faces[1][0][0],
-        self.faces[0][0][2], self.faces[0][0][1], self.faces[0][0][0],
-        self.faces[3][0][0], self.faces[3][1][0], self.faces[3][2][0],
-        self.faces[5][0][2], self.faces[5][0][1], self.faces[5][0][0]
-        )
-
+        for i in range(3):
+            self.r
     @property
     def L(self):
-        self.rotate(2)
-        (
-        self.faces[0][2][0], self.faces[0][2][1], self.faces[0][2][2],
-        self.faces[1][2][0], self.faces[1][2][1], self.faces[1][2][2],
-        self.faces[5][2][0], self.faces[5][2][1], self.faces[5][2][2],
-        self.faces[3][2][2], self.faces[3][1][2], self.faces[3][0][2]
-        ) = (
-        self.faces[3][2][2], self.faces[3][1][2], self.faces[3][0][2],
-        self.faces[0][2][0], self.faces[0][2][1], self.faces[0][2][2],
-        self.faces[1][2][0], self.faces[1][2][1], self.faces[1][2][2],
-        self.faces[5][2][0], self.faces[5][2][1], self.faces[5][2][2]
-        )
+        for i in range(3):
+            self.l
